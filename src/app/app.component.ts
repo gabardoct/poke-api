@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'poke-api';
+  navLinks: any[];
+
+  constructor() {
+    this.navLinks = [
+      { path: '/', label: 'Home' },
+      { path: 'pokemon', label: 'Pokemon' },
+      { path: 'items', label: 'Items' },
+    ];
+
+  }
 }

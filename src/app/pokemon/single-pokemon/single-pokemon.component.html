@@ -1,0 +1,8 @@
+<div>
+    <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="pokemon image" class="sprite" style="height: 200px;">
+    <span>Name: {{pokemon.name}}</span>
+    <span>Pokédex ID: {{pokemon.id}}</span>
+    <span>Avg. Height: {{pokemon.height/10}} meters</span>
+    <span>Avg. Weight: {{pokemon.weight/100}} kg</span>
+    <span>Evolves into: {{this.evolutionInfo.chain.species.name}}</span>
+</div>
