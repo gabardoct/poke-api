@@ -1,8 +1,11 @@
-<div>
-    <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="pokemon image" class="sprite" style="height: 200px;">
-    <span>Name: {{pokemon.name}}</span>
-    <span>Pokédex ID: {{pokemon.id}}</span>
-    <span>Avg. Height: {{pokemon.height/10}} meters</span>
-    <span>Avg. Weight: {{pokemon.weight/100}} kg</span>
-    <span>Evolves into: {{this.evolutionInfo.chain.species.name}}</span>
+<div class="info-card-wrapper">
+    <div class="info-card">
+        <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="pokemon image" class="sprite" >
+        <span class="pokemon-name">{{pokemon.name | titlecase}}</span>
+        <span class="info-line grass">Pokédex ID: {{pokemon.id}}</span>
+        <span class="info-line grass">Avg. Height: {{pokemon.height/10}} meters</span>
+        <span class="info-line grass">Avg. Weight: {{pokemon.weight/100}} kg</span>
+        <span class="evo-line" (click)="goToEvolution()" *ngIf="this.evolutionInfo != null"> <img src="/assets/evo-icon.webp" style="width: 60px;"><span class="poke-evolution">Evo: {{this.evolutionInfo | titlecase}}</span></span>
+        <span class="info-line grass" *ngIf="this.evolutionInfo === null">No Evolution</span>
+    </div>
 </div>

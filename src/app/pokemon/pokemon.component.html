@@ -1,15 +1,19 @@
-<h3>Switch between generations!</h3>
-<div style="margin-left: 10px; display: flex; flex-direction: row; gap: 10px">
-    <span class="gen-btn red" (click)="switchGen(1)">Gen. I</span>
-    <span class="gen-btn blue" (click)="switchGen(2)">Gen. II</span>
-    <span class="gen-btn green" (click)="switchGen(3)">Gen. III</span>
-    <span class="gen-btn light-blue" (click)="switchGen(4)">Gen. IV</span>
-    <span class="gen-btn black" (click)="switchGen(5)">Gen. V</span>
-    <span class="gen-btn blue-grey" (click)="switchGen(6)">Gen. VI</span>
-    <span class="gen-btn orange" (click)="switchGen(7)">Gen. VII</span>
-    <span class="gen-btn light-red" (click)="switchGen(8)">Gen. VIII</span>
-    <span class="gen-btn purple" (click)="switchGen(9)">Gen. IX</span>
+
+<div class="switch-gen-box">
+    <span class="switch-gen-text">Switch between generations!</span>
+    <div class="gen-btn-container">
+        <span class="gen-btn red" (click)="switchGen(1)">Gen. I</span>
+        <span class="gen-btn blue" (click)="switchGen(2)">Gen. II</span>
+        <span class="gen-btn green" (click)="switchGen(3)">Gen. III</span>
+        <span class="gen-btn light-blue" (click)="switchGen(4)">Gen. IV</span>
+        <span class="gen-btn black" (click)="switchGen(5)">Gen. V</span>
+        <span class="gen-btn blue-grey" (click)="switchGen(6)">Gen. VI</span>
+        <span class="gen-btn orange" (click)="switchGen(7)">Gen. VII</span>
+        <span class="gen-btn light-red" (click)="switchGen(8)">Gen. VIII</span>
+        <span class="gen-btn purple" (click)="switchGen(9)">Gen. IX</span>
+    </div>
 </div>
+
 
 <div class="info-card-container">
     <div *ngFor="let pokemon of sortedPokemonList; let i = index; trackBy: trackByFn" class="info-card" (click)="viewPokemon(pokemon)">
@@ -17,7 +21,7 @@
         (mouseenter)="this.showBackSpriteList[i] = true" (mouseleave)="this.showBackSpriteList[i] = false">
 
 
-        <span class="info-line">Name: {{pokemon.species.name | titlecase}}</span>
+        <span class="pokemon-name">{{pokemon.species.name | titlecase}}</span>
         <span class="info-line">Pokédex ID: {{pokemon.id}}</span>
         <span class="info-line">Average Height: {{pokemon.height/10}} meters</span>
         <span class="info-line">Average Weight: {{pokemon.weight/100}} kg</span>

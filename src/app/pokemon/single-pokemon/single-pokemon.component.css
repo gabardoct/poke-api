@@ -1,0 +1,45 @@
+.poke-evolution {
+    font-family: 'Gobold High', cursive;
+}
+
+
+.info-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-card {
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    padding: 2vw;
+    border-radius: 10px;
+    background-color: wheat;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+    width: fit-content;
+}
+
+.info-line {
+    margin: 5px 0;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.evo-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sprite {
+    width: 20vw;
+    height: 20vw;
+}
+
+.grass {
+    background-color: green;
+    color: white;
+}

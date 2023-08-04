@@ -1,43 +1,30 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { HttpClientModule } from '@angular/common/http';
-import { NgHttpCachingModule, NgHttpCachingConfig } from 'ng-http-caching';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
+
+import { CommonModule } from '@angular/common';
 import { PokemonComponent } from './pokemon/pokemon.component';
+import { SinglePokemonComponent } from './pokemon/single-pokemon/single-pokemon.component';
 import { ItemsComponent } from './items/items.component';
 import { HomeComponent } from './home/home.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { SinglePokemonComponent } from './pokemon/single-pokemon/single-pokemon.component';
-
-
-const ngHttpCachingConfig: NgHttpCachingConfig = {
-  lifetime: 1000 * 60 * 10 // cache expire after 10 minutes
-};
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonComponent,
+    SinglePokemonComponent,
     ItemsComponent,
-    HomeComponent,
-    SinglePokemonComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    CommonModule,
     MatIconModule,
-    MatMenuModule,
-    HttpClientModule,
-    NgHttpCachingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

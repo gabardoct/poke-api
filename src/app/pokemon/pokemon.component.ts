@@ -15,17 +15,18 @@ export interface PokemonFetch {
 }
 
 export interface Pokemon {
-  id: number;
-  name: string;
-  weight: number;
-  height: number;
+  id: number,
+  name: string,
+  weight: number,
+  height: number,
+  order: number,
   species: {
-    name: string;
-    url: string;
+    name: string,
+    url: string,
   }
   sprites: {
-    front_default: string;
-    back_default: string;
+    front_default: string,
+    back_default: string,
     other: {
       "official-artwork": {
         front_default: string;
@@ -33,17 +34,17 @@ export interface Pokemon {
     }
   }
   stats: {
-    base_stat: number;
+    base_stat: number,
     stat: {
-      name: string;
-      url: string;
+      name: string,
+      url: string,
     }
-  }[];
+  }[],
   types: {
-    slot: number;
+    slot: number,
     type: {
-      name: string;
-      url: string;
+      name: string,
+      url: string,
     }
   }[];
 }
