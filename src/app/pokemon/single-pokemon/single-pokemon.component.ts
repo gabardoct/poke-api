@@ -79,13 +79,15 @@ export class SinglePokemonComponent implements OnInit {
 
   async ngOnInit() {
     this.pokemonObj = history.state.pokemon; // this is the pokemon object passed from the previous page
-    let speciesObjString = "https://pokeapi.co/api/v2/pokemon-species/"+this.pokemonObj.order.toString();
+
+    console.log (this.pokemonObj);
+    let speciesObjString = this.pokemonObj.species.url.toString();
 
     this.pokemonSpeciesObj = await lastValueFrom(this.httpClient.get<PokemonSpecies>(speciesObjString));
     this.evolutionChain = await lastValueFrom(this.httpClient.get<EvolutionChain>(this.pokemonSpeciesObj.evolution_chain.url.toString()));
 
 
-    //WHAT THE FUCK IS THIS
+    //TODO: Fix this stupid shit
     this.evolutionChain.chain.evolves_to.forEach((evolution) => {
       if (evolution.species.name == this.pokemonObj.name) {
         this.evolutionChain.chain = evolution;
@@ -108,8 +110,7 @@ export class SinglePokemonComponent implements OnInit {
       }
     });
 
-    console.log(this.pokemonSpeciesObj); 
-    console.log(this.pokemonObj.order.toString());
+    console.log(this.evolutionInfo);
   }
 
   public goToEvolution() {
@@ -122,11 +123,14 @@ export class SinglePokemonComponent implements OnInit {
 
   public get evolutionInfo(): string|null {
 
-    let evolutionName = this.evolutionChain.chain.evolves_to[0].species.name;
+    var evolutionName;
+    let evolutionChainInfo = this.evolutionChain.chain.evolves_to[0];
+    if (evolutionChainInfo == undefined || evolutionChainInfo == null) { 
+      evolutionName = null;
+    } else {
+      evolutionName = this.evolutionChain.chain.evolves_to[0].species.name;  
+    }
 
-    if (evolutionName == "" || evolutionName == undefined || evolutionName == null) { 
-      return null;
-    } 
     return evolutionName;
   }
 
