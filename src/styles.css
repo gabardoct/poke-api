@@ -30,7 +30,11 @@ body { margin: 0; font-family: 'Titillium Web', sans-serif; }
 
 @media (max-width: 700px) and (min-width: 0px) {
     .info-card {
-        width: 40vw;
+        width: 45vw;
+    }
+
+    .gen-btn-container {
+        font-size: 0.5em;
     }
 }
 
@@ -38,11 +42,19 @@ body { margin: 0; font-family: 'Titillium Web', sans-serif; }
     .info-card {
         width: 30vw;
     }
+
+    .gen-btn-container {
+        font-size: 0.7em;
+    }
 }
 
 @media (max-width: 1200px) and (min-width: 900px) {
     .info-card {
         width: 20vw;
+    }
+
+    .gen-btn-container {
+        font-size: 0.90em;
     }
 }
 
