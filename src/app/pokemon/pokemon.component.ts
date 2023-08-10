@@ -60,6 +60,7 @@ export class PokemonComponent implements OnInit {
   private pokemonArray!: Pokemon[];
   private showBackSprite!: boolean[];
   private currentGen: number = 1;
+  private disableGenButton: boolean = false;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -81,6 +82,8 @@ export class PokemonComponent implements OnInit {
       let pokemon : Pokemon = await firstValueFrom(this.httpClient.get<Pokemon>(pokemonFetch.url));
       this.pokemonArray.push(pokemon);
     });
+
+    this.disableGenButton = false;
   }
 
   viewPokemon(pokemon: Pokemon) {
@@ -89,10 +92,10 @@ export class PokemonComponent implements OnInit {
   }
 
   public async switchGen(generation: number) {
-    console.log("EPIC");
     if (generation == this.currentGen ) {
       return;
-    } else {
+    } else if (this.disableGenButton == false) {
+      this.disableGenButton = true;
       switch (generation) {
         case 1: 
           this.pokemonFetches = await firstValueFrom(this.httpClient.get<PokemonFetchWrapper>('https://pokeapi.co/api/v2/pokemon?limit=151'));

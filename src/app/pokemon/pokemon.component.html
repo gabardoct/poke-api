@@ -16,14 +16,24 @@
 
 
 <div class="info-card-container">
-    <div *ngFor="let pokemon of sortedPokemonList; let i = index; trackBy: trackByFn" class="info-card" (click)="viewPokemon(pokemon)">
-        <img [src]="pokemon.sprites[this.showBackSpriteList[i] ? 'back_default' : 'front_default']" alt="pokemon image" class="sprite"
-        (mouseenter)="this.showBackSpriteList[i] = true" (mouseleave)="this.showBackSpriteList[i] = false">
+        <div *ngFor="let pokemon of sortedPokemonList; let i = index; trackBy: trackByFn" class="info-card-wrap">
+            <div class="info-card" class="info-card" (click)="viewPokemon(pokemon)">
+                <img [src]="pokemon.sprites[this.showBackSpriteList[i] ? 'back_default' : 'front_default']" alt="pokemon image" class="sprite"
+                (mouseenter)="this.showBackSpriteList[i] = true" (mouseleave)="this.showBackSpriteList[i] = false">
+        
+        
+                <span class="pokemon-name">{{pokemon.species.name | titlecase}}</span>
+                <span class="info-line">Pokédex ID: {{pokemon.id}}</span>
+                <div class="info-line">
+                    <span style="margin-right: 4px;">Types: </span>
+                    <div style="display: flex;" *ngFor="let type of pokemon.types; let i = index">{{" "+type.type.name | titlecase}}<div *ngIf="i+1<pokemon.types.length">/</div></div>
+                </div>
+    
+            </div>
 
+            <div class="info-card-shadow">
 
-        <span class="pokemon-name">{{pokemon.species.name | titlecase}}</span>
-        <span class="info-line">Pokédex ID: {{pokemon.id}}</span>
-        <span class="info-line">Average Height: {{pokemon.height/10}} meters</span>
-        <span class="info-line">Average Weight: {{pokemon.weight/100}} kg</span>
-    </div>
+            </div>
+        </div>
+
 </div>

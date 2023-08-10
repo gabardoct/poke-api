@@ -1,13 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Titillium Web', sans-serif; }
 
 
 .pokemon-name {
-    font-family: 'Gobold High', cursive;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.6rem;
+    font-size: 2em;
+}
+
+.info-card-container {
+    z-index: 2;
+}
+
+.info-card {
+    width: 10vw;
+    font-weight: 300;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 10px;
+    cursor: pointer;
+    border: black solid 2px;
+}
+
+@media (max-width: 700px) and (min-width: 0px) {
+    .info-card {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 700px) {
+    .info-card {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 900px) {
+    .info-card {
+        width: 20vw;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+    .info-card {
+        width: 18vw;
+    }
+}
+
+@media (min-width: 1600px) and (max-width: 1900px) {
+    .info-card {
+        width: 16vw;
+    }
+}
+
+@media (min-width: 1900px) {
+    .info-card {
+        width: 12vw;
+    }
 }
