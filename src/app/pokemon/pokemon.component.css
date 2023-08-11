@@ -70,13 +70,17 @@
     color: white;
     padding: 2px;
     cursor: pointer;
-    width: 100%;
     display: flex;
+    border: solid black 1px;
+}
+
+.gen-btn:hover {
+    transform: translate(3px, 3px);
 }
 
 .gen-btn-wrap {
     position: relative;
-    width: 8vw;
+    width: 120px;
 }
 
 .gen-btn-shadow {

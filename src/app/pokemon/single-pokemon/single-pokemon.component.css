@@ -20,11 +20,14 @@
     cursor: pointer;
     border: black solid 2px;
     width: fit-content;
+    justify-content: center;
+    align-items: center;
 }
 
 .info-line {
     margin: 5px 0;
     padding: 4px;
+    width: 100%;
 }
 
 .evo-line {
