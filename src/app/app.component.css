@@ -73,7 +73,7 @@ app-root {
 }
 
 .headerlink > a {
-    font-weight: 900;
+    font-weight: 300;
     font-size: 20px;
     color: black;
     margin: 0 16px;

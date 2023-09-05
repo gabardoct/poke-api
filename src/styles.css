@@ -3,6 +3,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Titillium Web', sans-serif; }
 
+.poke-text {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 0.9em;
+}
 
 .pokemon-name {
     font-family: 'Outfit', sans-serif;
