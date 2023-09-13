@@ -152,8 +152,16 @@ export class PokemonComponent implements OnInit {
     }
   }
 
-  trackByFn(index: number, item: Pokemon) {
-    return item.id;
+  trackByFn(index: number, object: Pokemon) {
+    return object.id;
+  }
+
+  checkSprites(pokemon: Pokemon): boolean {
+    if (pokemon.sprites.back_default != null && pokemon.sprites.back_default != undefined && pokemon.sprites.back_default != "") {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   get pokemonList() { return this.pokemonArray }

@@ -19,7 +19,7 @@
         <div *ngFor="let pokemon of sortedPokemonList; let i = index; trackBy: trackByFn" class="info-card-wrap">
             <div class="info-card" class="info-card" (click)="viewPokemon(pokemon)">
                 <img [src]="pokemon.sprites[this.showBackSpriteList[i] ? 'back_default' : 'front_default']" alt="pokemon image" class="sprite"
-                (mouseenter)="this.showBackSpriteList[i] = true" (mouseleave)="this.showBackSpriteList[i] = false">
+                (mouseenter)="this.showBackSpriteList[i] = checkSprites(pokemon)" (mouseleave)="this.showBackSpriteList[i] = false">
         
         
                 <span class="pokemon-name">{{pokemon.species.name | titlecase}}</span>
