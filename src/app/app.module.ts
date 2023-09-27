@@ -10,6 +10,7 @@ import { SinglePokemonComponent } from './pokemon/single-pokemon/single-pokemon.
 import { ItemsComponent } from './items/items.component';
 import { HomeComponent } from './home/home.component';
 import { MatIconModule } from '@angular/material/icon';
+import { PokemonNamePipe } from './_service/pokemon-name/pokemon-name.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
     PokemonComponent,
     SinglePokemonComponent,
     ItemsComponent,
-    HomeComponent
+    HomeComponent,
+    PokemonNamePipe
   ],
   imports: [
     BrowserModule,

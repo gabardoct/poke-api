@@ -67,6 +67,7 @@
 }
 
 .gen-btn {
+    justify-content: center;
     color: white;
     padding: 2px;
     cursor: pointer;

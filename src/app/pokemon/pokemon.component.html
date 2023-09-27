@@ -22,7 +22,7 @@
                 (mouseenter)="this.showBackSpriteList[i] = checkSprites(pokemon)" (mouseleave)="this.showBackSpriteList[i] = false">
         
         
-                <span class="pokemon-name">{{pokemon.species.name | titlecase}}</span>
+                <span class="pokemon-name">{{pokemon.species.name | pokemonName}}</span>
                 <span class="info-line">Pokédex ID: {{pokemon.id}}</span>
                 <div class="info-line">
                     <span style="margin-right: 4px;">Types: </span>
