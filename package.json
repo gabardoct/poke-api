@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^15.2.10",
     "@angular/router": "^15.2.10",
     "@angular/service-worker": "^15.2.10",
-    "ng-http-caching": "^14.0.3",
+    "ng-http-caching": "^17.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
