@@ -1,7 +1,7 @@
 <div class="info-card-wrapper">
     <div class="info-card">
         <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="pokemon image" class="sprite" >
-        <span class="pokemon-name">{{pokemon.species.name | titlecase}}</span>
+        <span class="pokemon-name">{{pokemon.species.name | pokemonName}}</span>
         <span class="info-line grass">Pokédex ID: {{pokemon.id}}</span>
         <span class="info-line grass">Avg. Height: {{pokemon.height/10}} meters</span>
         <span class="info-line grass">Avg. Weight: {{pokemon.weight/100}} kg</span>
