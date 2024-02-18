@@ -1,10 +1,28 @@
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
 .poke-evolution {
     font-family: 'Titillium Web', sans-serif;
+}
+
+.prev, .next {
+    width: 16vw;
+    background: rgb(252, 21, 21);
+    display: flex;
+    line-height: 3;
+    justify-content: center;
+    border: black solid 2px;
 }
 
 
 .info-card-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

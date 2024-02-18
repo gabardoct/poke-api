@@ -159,4 +159,12 @@ export class SinglePokemonComponent implements OnInit {
     return this.pokemonObj!.types[0].type.name;
   }
 
+  public get previousId(): number {
+    return this.pokemonObj!.id - 1;
+  }
+
+  public get nextId(): number {
+    return this.pokemonObj!.id + 1;
+  }
+
 }
