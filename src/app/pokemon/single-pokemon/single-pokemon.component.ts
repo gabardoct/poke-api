@@ -80,8 +80,6 @@ export class SinglePokemonComponent implements OnInit {
   async ngOnInit() {
     this.pokemonObj = history.state.pokemon; // this is the pokemon object passed from the previous page
 
-    console.log(this.pokemonObj);
-
     if (!this.pokemonObj) {
       this.pokemonObj = await lastValueFrom(this.httpClient.get<Pokemon>("https://pokeapi.co/api/v2/pokemon/" + this.route.snapshot.params['id']));
     } 
