@@ -5,9 +5,13 @@
         <span class="info-line grass">Pokédex ID: {{pokemon.id}}</span>
         <span class="info-line grass">Avg. Height: {{pokemon.height/10}} meters</span>
         <span class="info-line grass">Avg. Weight: {{pokemon.weight/100}} kg</span>
-        <span class="evo-line" (click)="goToEvolution()" *ngIf="this.evolutionInfo != null;else noEvo"> <img src="/assets/evo-icon.webp" style="width: 60px;"><span class="poke-evolution">Evo: {{this.evolutionInfo | titlecase}}</span></span>
+
+
+        <span class="evo-line" (click)="goToEvolution()" *ngIf="this.evolutionInfo != null; else noEvo"> <img src="/assets/evo-icon.webp" style="width: 60px;"><span class="poke-evolution">Evo: {{this.evolutionInfo | titlecase}}</span></span>
         <ng-template #noEvo>
             <span class="evo-line"><img src="/assets/evo-icon.webp" style="width: 60px;">No Evolution</span>
         </ng-template>
+
+        
     </div>
 </div>

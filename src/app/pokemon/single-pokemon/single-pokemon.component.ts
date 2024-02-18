@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationStart, Router, UrlSegment } from '@angular/router';
 import { Pokemon } from '../pokemon.component';
 import { first, firstValueFrom, lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Navigation } from '@angular/router';
 
 
 export interface PokemonSpecies {
@@ -71,15 +72,31 @@ export interface EvolutionTrigger {
 })
 export class SinglePokemonComponent implements OnInit {
 
-  private pokemonObj!: Pokemon;
+  private pokemonObj: Pokemon | null = null;
   private pokemonSpeciesObj!: PokemonSpecies;
   private evolutionChain!: EvolutionChain;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) { }
+  constructor(
+    private route: ActivatedRoute,  
+    private router: Router, 
+    private httpClient: HttpClient) { }
 
   async ngOnInit() {
-    this.pokemonObj = history.state.pokemon; // this is the pokemon object passed from the previous page
+    
+    this.route.paramMap.subscribe(params => {
+      const pokemon = history.state && history.state.pokemon;
+      if (pokemon) {
+        this.pokemonObj = pokemon;
+        console.log(this.pokemonObj);
+        this.refresh();
+      }
+    });
 
+    this.refresh();
+
+  }
+
+  public async refresh() {
     if (!this.pokemonObj) {
       this.pokemonObj = await lastValueFrom(this.httpClient.get<Pokemon>("https://pokeapi.co/api/v2/pokemon/" + this.route.snapshot.params['id']));
     } 
@@ -92,15 +109,15 @@ export class SinglePokemonComponent implements OnInit {
 
     //TODO: Fix this stupid shit
     this.evolutionChain.chain.evolves_to.forEach((evolution) => {
-      if (evolution.species.name == this.pokemonObj.name) {
+      if (evolution.species.name == this.pokemonObj!.name) {
         this.evolutionChain.chain = evolution;
       } else {
         evolution.evolves_to.forEach((evolution2) => {
-          if (evolution2.species.name == this.pokemonObj.name) {
+          if (evolution2.species.name == this.pokemonObj!.name) {
             this.evolutionChain.chain = evolution2;
           } else {
             evolution2.evolves_to.forEach((evolution3) => {
-              if (evolution3.species.name == this.pokemonObj.name) {
+              if (evolution3.species.name == this.pokemonObj!.name) {
                 this.evolutionChain.chain = evolution3;
               } else {
                 evolution3.evolves_to.forEach((evolution4) => {
@@ -112,21 +129,21 @@ export class SinglePokemonComponent implements OnInit {
         });
       }
     });
-
-    console.log(this.evolutionInfo);
+    
   }
 
-  public goToEvolution() {
-    return;
+  public async goToEvolution() {
+    let pokemon: Pokemon = await lastValueFrom(this.httpClient.get<Pokemon>("https://pokeapi.co/api/v2/pokemon/" + this.evolutionInfo));
+    this.router.navigate(['/single-pokemon', pokemon.id], { state: { pokemon } });
   }
 
   public get pokemon(): Pokemon {
-    return this.pokemonObj;
+    return this.pokemonObj!;
   }
 
   public get evolutionInfo(): string|null {
 
-    var evolutionName;
+    let evolutionName;
     let evolutionChainInfo = this.evolutionChain.chain.evolves_to[0];
     if (evolutionChainInfo == undefined || evolutionChainInfo == null) { 
       evolutionName = null;
@@ -139,7 +156,7 @@ export class SinglePokemonComponent implements OnInit {
 
   //Return the first type (if dual type)
   public get mainType(): string {
-    return this.pokemonObj.types[0].type.name;
+    return this.pokemonObj!.types[0].type.name;
   }
 
 }
