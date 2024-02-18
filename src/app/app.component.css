@@ -90,7 +90,7 @@ mat-icon:hover {
 
 .content {
     display: flex;
-    margin: 82px auto auto 32px;
+    margin: 82px auto 0 auto;
     padding: 0 16px;
     max-width: 1280px;
     flex-direction: column;

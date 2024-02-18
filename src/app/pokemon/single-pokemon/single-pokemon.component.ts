@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Pokemon } from '../pokemon.component';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { first, firstValueFrom, lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -80,7 +80,12 @@ export class SinglePokemonComponent implements OnInit {
   async ngOnInit() {
     this.pokemonObj = history.state.pokemon; // this is the pokemon object passed from the previous page
 
-    console.log (this.pokemonObj);
+    console.log(this.pokemonObj);
+
+    if (!this.pokemonObj) {
+      this.pokemonObj = await lastValueFrom(this.httpClient.get<Pokemon>("https://pokeapi.co/api/v2/pokemon/" + this.route.snapshot.params['id']));
+    } 
+
     let speciesObjString = this.pokemonObj.species.url.toString();
 
     this.pokemonSpeciesObj = await lastValueFrom(this.httpClient.get<PokemonSpecies>(speciesObjString));
